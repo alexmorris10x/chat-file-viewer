@@ -20,6 +20,7 @@
 		8CDFA5FF104E2D95717DD871 /* ChatFileViewerShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		955262F1C9A6E4EA4C3E6BC4 /* marked.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 388D7E2623E956A397C30399 /* marked.min.txt */; };
 		973123CF40E7DE305A3B80E5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990ACDC05073AFD2841FE87 /* ShareViewController.swift */; };
+		9E3220A978D7391BAE4294AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BC633B382E96CBA54A1B3EA /* Assets.xcassets */; };
 		E358BB27EDC69CEB9102D49C /* MermaidExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */; };
 		EEBF2C5EFA1A3A4AC5BC0C67 /* MermaidRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */; };
 		F8558A8249117B78C4678AA5 /* mermaid.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		036080C15F4551202CAF4825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		121FA53D062B7F034A5D9391 /* ChatFileViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerUITests.swift; sourceTree = "<group>"; };
 		144ADC4BCDEED4737F159459 /* ChatFileViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerApp.swift; sourceTree = "<group>"; };
 		246BC7209860C77C7D0CBA51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		38A6B097542872468C2E5592 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidExtractor.swift; sourceTree = "<group>"; };
 		675E9A31C80A8360E2468ED4 /* ChatFileViewerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChatFileViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BC633B382E96CBA54A1B3EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9990ACDC05073AFD2841FE87 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRenderView.swift; sourceTree = "<group>"; };
 		D8D6C6C1742CC983FF275EF5 /* ChatFileViewerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChatFileViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +168,8 @@
 		F8D4F15E3049121F8545BB57 /* ChatFileViewer */ = {
 			isa = PBXGroup;
 			children = (
+				8BC633B382E96CBA54A1B3EA /* Assets.xcassets */,
+				036080C15F4551202CAF4825 /* Info.plist */,
 				8F0B83F445585EBE0930AE14 /* App */,
 				56EE9B865018AF32D5590E58 /* Features */,
 				14F04ABAECB72145D28689E0 /* Resources */,
@@ -308,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E3220A978D7391BAE4294AE /* Assets.xcassets in Resources */,
 				955262F1C9A6E4EA4C3E6BC4 /* marked.min.txt in Resources */,
 				434DDFF6EA5EBE5857A7DA05 /* mermaid.min.txt in Resources */,
 			);
@@ -482,22 +488,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98CDQPW36W;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Chat File Viewer";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChatFileViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,22 +508,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98CDQPW36W;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Chat File Viewer";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationPortraitUpsideDown,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
-					UIInterfaceOrientationPortrait,
-					UIInterfaceOrientationLandscapeLeft,
-					UIInterfaceOrientationLandscapeRight,
-				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChatFileViewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
