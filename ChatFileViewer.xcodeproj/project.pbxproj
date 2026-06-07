@@ -1,0 +1,729 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		055BB729038B34731583AC3D /* ChatFileViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121FA53D062B7F034A5D9391 /* ChatFileViewerUITests.swift */; };
+		0F40A04CF20A16DB58E940FA /* MermaidExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */; };
+		30D7C70AD7D385A8A5C9D4A2 /* marked.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 388D7E2623E956A397C30399 /* marked.min.txt */; };
+		434DDFF6EA5EBE5857A7DA05 /* mermaid.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */; };
+		4CC39F491F0F558355E2DC80 /* MermaidRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */; };
+		4E3292065771BFA6CC942948 /* MarkupDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDF30EAFA22ADA2A7A5EE7 /* MarkupDocumentTests.swift */; };
+		62522BBF68F0D78D754AF2FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6B097542872468C2E5592 /* ContentView.swift */; };
+		6E64CDBBE6EC05F9F9B1A8B8 /* MermaidRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */; };
+		76D065406798F6C61EAD7920 /* MermaidExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */; };
+		85690EDDBE34E048DF885485 /* ChatFileViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144ADC4BCDEED4737F159459 /* ChatFileViewerApp.swift */; };
+		8CDFA5FF104E2D95717DD871 /* ChatFileViewerShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		955262F1C9A6E4EA4C3E6BC4 /* marked.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 388D7E2623E956A397C30399 /* marked.min.txt */; };
+		973123CF40E7DE305A3B80E5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990ACDC05073AFD2841FE87 /* ShareViewController.swift */; };
+		E358BB27EDC69CEB9102D49C /* MermaidExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */; };
+		EEBF2C5EFA1A3A4AC5BC0C67 /* MermaidRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */; };
+		F8558A8249117B78C4678AA5 /* mermaid.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CCF19316872AD2EA7E3A568 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E3DA41F956C624B93D27FBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A29C0075A6BD46E20B013E9;
+			remoteInfo = ChatFileViewer;
+		};
+		A671578D7EE9A67AA4C9BBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E3DA41F956C624B93D27FBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A29C0075A6BD46E20B013E9;
+			remoteInfo = ChatFileViewer;
+		};
+		BBCB766F106CACCFECC4D95B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E3DA41F956C624B93D27FBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCFFB285AE381A5D19D9F226;
+			remoteInfo = ChatFileViewerShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D8EE77843608638A4ED683A7 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8CDFA5FF104E2D95717DD871 /* ChatFileViewerShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		121FA53D062B7F034A5D9391 /* ChatFileViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerUITests.swift; sourceTree = "<group>"; };
+		144ADC4BCDEED4737F159459 /* ChatFileViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerApp.swift; sourceTree = "<group>"; };
+		246BC7209860C77C7D0CBA51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = mermaid.min.txt; sourceTree = "<group>"; };
+		32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ChatFileViewerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		388D7E2623E956A397C30399 /* marked.min.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = marked.min.txt; sourceTree = "<group>"; };
+		38A6B097542872468C2E5592 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidExtractor.swift; sourceTree = "<group>"; };
+		675E9A31C80A8360E2468ED4 /* ChatFileViewerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChatFileViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9990ACDC05073AFD2841FE87 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidRenderView.swift; sourceTree = "<group>"; };
+		D8D6C6C1742CC983FF275EF5 /* ChatFileViewerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChatFileViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBEDF30EAFA22ADA2A7A5EE7 /* MarkupDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupDocumentTests.swift; sourceTree = "<group>"; };
+		FEADCC81149A32CA688AD8D4 /* ChatFileViewer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChatFileViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		061FCD3D7FA2ED2820ADC98B = {
+			isa = PBXGroup;
+			children = (
+				F8D4F15E3049121F8545BB57 /* ChatFileViewer */,
+				7D9C058698CEC23F145F6452 /* ChatFileViewerShare */,
+				159B3FD10A2F239F1EC4D283 /* ChatFileViewerTests */,
+				E61964466E85E1893BCAB6BA /* ChatFileViewerUITests */,
+				E699F4CB178A69C8F0578815 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14F04ABAECB72145D28689E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				388D7E2623E956A397C30399 /* marked.min.txt */,
+				27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		159B3FD10A2F239F1EC4D283 /* ChatFileViewerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBEDF30EAFA22ADA2A7A5EE7 /* MarkupDocumentTests.swift */,
+			);
+			path = ChatFileViewerTests;
+			sourceTree = "<group>";
+		};
+		56EE9B865018AF32D5590E58 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				38A6B097542872468C2E5592 /* ContentView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		7D9C058698CEC23F145F6452 /* ChatFileViewerShare */ = {
+			isa = PBXGroup;
+			children = (
+				246BC7209860C77C7D0CBA51 /* Info.plist */,
+				9990ACDC05073AFD2841FE87 /* ShareViewController.swift */,
+			);
+			path = ChatFileViewerShare;
+			sourceTree = "<group>";
+		};
+		860A16D80D3DF0374ED4B748 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */,
+				A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8F0B83F445585EBE0930AE14 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				144ADC4BCDEED4737F159459 /* ChatFileViewerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E61964466E85E1893BCAB6BA /* ChatFileViewerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				121FA53D062B7F034A5D9391 /* ChatFileViewerUITests.swift */,
+			);
+			path = ChatFileViewerUITests;
+			sourceTree = "<group>";
+		};
+		E699F4CB178A69C8F0578815 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEADCC81149A32CA688AD8D4 /* ChatFileViewer.app */,
+				32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */,
+				675E9A31C80A8360E2468ED4 /* ChatFileViewerTests.xctest */,
+				D8D6C6C1742CC983FF275EF5 /* ChatFileViewerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8D4F15E3049121F8545BB57 /* ChatFileViewer */ = {
+			isa = PBXGroup;
+			children = (
+				8F0B83F445585EBE0930AE14 /* App */,
+				56EE9B865018AF32D5590E58 /* Features */,
+				14F04ABAECB72145D28689E0 /* Resources */,
+				860A16D80D3DF0374ED4B748 /* Shared */,
+			);
+			path = ChatFileViewer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A29C0075A6BD46E20B013E9 /* ChatFileViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9DBED9138207E54D9A19163 /* Build configuration list for PBXNativeTarget "ChatFileViewer" */;
+			buildPhases = (
+				8987EA9FD8055635AC4F8934 /* Sources */,
+				C4AA07EF7F3A11DC3C64FC98 /* Resources */,
+				D8EE77843608638A4ED683A7 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81D690CC083AF6B81E9BAC64 /* PBXTargetDependency */,
+			);
+			name = ChatFileViewer;
+			packageProductDependencies = (
+			);
+			productName = ChatFileViewer;
+			productReference = FEADCC81149A32CA688AD8D4 /* ChatFileViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5114BE7B8BE33652B9937D6 /* ChatFileViewerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E73E28EFD92A82DA5FBC44A6 /* Build configuration list for PBXNativeTarget "ChatFileViewerTests" */;
+			buildPhases = (
+				C853574EEAD9075D90CA6561 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08FB34E34CDFE2503E4EACF1 /* PBXTargetDependency */,
+			);
+			name = ChatFileViewerTests;
+			packageProductDependencies = (
+			);
+			productName = ChatFileViewerTests;
+			productReference = 675E9A31C80A8360E2468ED4 /* ChatFileViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E9A512CF41D1ABFAE8C7A2CB /* ChatFileViewerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E24C6611A81438B73357056 /* Build configuration list for PBXNativeTarget "ChatFileViewerUITests" */;
+			buildPhases = (
+				8AD2B513B7BC2DBAA065C0ED /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C81A2E4F80131F40124A7779 /* PBXTargetDependency */,
+			);
+			name = ChatFileViewerUITests;
+			packageProductDependencies = (
+			);
+			productName = ChatFileViewerUITests;
+			productReference = D8D6C6C1742CC983FF275EF5 /* ChatFileViewerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		FCFFB285AE381A5D19D9F226 /* ChatFileViewerShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 213ECE2102BA5E45FF9C4A71 /* Build configuration list for PBXNativeTarget "ChatFileViewerShare" */;
+			buildPhases = (
+				D40A0B37A541810529537FED /* Sources */,
+				AC0BC74D8252EF807DA7143E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatFileViewerShare;
+			packageProductDependencies = (
+			);
+			productName = ChatFileViewerShare;
+			productReference = 32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E3DA41F956C624B93D27FBC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2A29C0075A6BD46E20B013E9 = {
+						DevelopmentTeam = 98CDQPW36W;
+						ProvisioningStyle = Automatic;
+					};
+					E9A512CF41D1ABFAE8C7A2CB = {
+						TestTargetID = 2A29C0075A6BD46E20B013E9;
+					};
+					FCFFB285AE381A5D19D9F226 = {
+						DevelopmentTeam = 98CDQPW36W;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 48A43CC92E2518ADB5A6A286 /* Build configuration list for PBXProject "ChatFileViewer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 061FCD3D7FA2ED2820ADC98B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A29C0075A6BD46E20B013E9 /* ChatFileViewer */,
+				FCFFB285AE381A5D19D9F226 /* ChatFileViewerShare */,
+				A5114BE7B8BE33652B9937D6 /* ChatFileViewerTests */,
+				E9A512CF41D1ABFAE8C7A2CB /* ChatFileViewerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC0BC74D8252EF807DA7143E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D7C70AD7D385A8A5C9D4A2 /* marked.min.txt in Resources */,
+				F8558A8249117B78C4678AA5 /* mermaid.min.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4AA07EF7F3A11DC3C64FC98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				955262F1C9A6E4EA4C3E6BC4 /* marked.min.txt in Resources */,
+				434DDFF6EA5EBE5857A7DA05 /* mermaid.min.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8987EA9FD8055635AC4F8934 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85690EDDBE34E048DF885485 /* ChatFileViewerApp.swift in Sources */,
+				62522BBF68F0D78D754AF2FD /* ContentView.swift in Sources */,
+				E358BB27EDC69CEB9102D49C /* MermaidExtractor.swift in Sources */,
+				4CC39F491F0F558355E2DC80 /* MermaidRenderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AD2B513B7BC2DBAA065C0ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				055BB729038B34731583AC3D /* ChatFileViewerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C853574EEAD9075D90CA6561 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E3292065771BFA6CC942948 /* MarkupDocumentTests.swift in Sources */,
+				0F40A04CF20A16DB58E940FA /* MermaidExtractor.swift in Sources */,
+				EEBF2C5EFA1A3A4AC5BC0C67 /* MermaidRenderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D40A0B37A541810529537FED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76D065406798F6C61EAD7920 /* MermaidExtractor.swift in Sources */,
+				6E64CDBBE6EC05F9F9B1A8B8 /* MermaidRenderView.swift in Sources */,
+				973123CF40E7DE305A3B80E5 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08FB34E34CDFE2503E4EACF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A29C0075A6BD46E20B013E9 /* ChatFileViewer */;
+			targetProxy = A671578D7EE9A67AA4C9BBFE /* PBXContainerItemProxy */;
+		};
+		81D690CC083AF6B81E9BAC64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCFFB285AE381A5D19D9F226 /* ChatFileViewerShare */;
+			targetProxy = BBCB766F106CACCFECC4D95B /* PBXContainerItemProxy */;
+		};
+		C81A2E4F80131F40124A7779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A29C0075A6BD46E20B013E9 /* ChatFileViewer */;
+			targetProxy = 5CCF19316872AD2EA7E3A568 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06A4C24B7CFB085C915A6443 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		0905C2799B852D2CD892DDB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ChatFileViewer;
+			};
+			name = Debug;
+		};
+		1462BC85B8BC5653E748CE62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ChatFileViewer;
+			};
+			name = Release;
+		};
+		8410C5CE37C1192DC2E28DB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98CDQPW36W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Chat File Viewer";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
+					UIInterfaceOrientationPortrait,
+					UIInterfaceOrientationPortraitUpsideDown,
+					UIInterfaceOrientationLandscapeLeft,
+					UIInterfaceOrientationLandscapeRight,
+				);
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
+					UIInterfaceOrientationPortrait,
+					UIInterfaceOrientationLandscapeLeft,
+					UIInterfaceOrientationLandscapeRight,
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer;
+				PRODUCT_NAME = ChatFileViewer;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B58498BC3DCF7D207C060761 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98CDQPW36W;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Chat File Viewer";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = (
+					UIInterfaceOrientationPortrait,
+					UIInterfaceOrientationPortraitUpsideDown,
+					UIInterfaceOrientationLandscapeLeft,
+					UIInterfaceOrientationLandscapeRight,
+				);
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
+					UIInterfaceOrientationPortrait,
+					UIInterfaceOrientationLandscapeLeft,
+					UIInterfaceOrientationLandscapeRight,
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer;
+				PRODUCT_NAME = ChatFileViewer;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFAAECE2D2CE83E9E8887E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98CDQPW36W;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChatFileViewerShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.share;
+				PRODUCT_NAME = ChatFileViewerShare;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC662510BE70B9A08B579451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		D13F4DB8AFF7D3DF595C925F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatFileViewer.app/ChatFileViewer";
+			};
+			name = Release;
+		};
+		EF0DBDC9071C2E5D1EA5C719 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 98CDQPW36W;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChatFileViewerShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.share;
+				PRODUCT_NAME = ChatFileViewerShare;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F65FEBABC8AEDB6900FEEB76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChatFileViewer.app/ChatFileViewer";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		213ECE2102BA5E45FF9C4A71 /* Build configuration list for PBXNativeTarget "ChatFileViewerShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF0DBDC9071C2E5D1EA5C719 /* Debug */,
+				BFAAECE2D2CE83E9E8887E49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		48A43CC92E2518ADB5A6A286 /* Build configuration list for PBXProject "ChatFileViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A4C24B7CFB085C915A6443 /* Debug */,
+				CC662510BE70B9A08B579451 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7E24C6611A81438B73357056 /* Build configuration list for PBXNativeTarget "ChatFileViewerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0905C2799B852D2CD892DDB1 /* Debug */,
+				1462BC85B8BC5653E748CE62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A9DBED9138207E54D9A19163 /* Build configuration list for PBXNativeTarget "ChatFileViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B58498BC3DCF7D207C060761 /* Debug */,
+				8410C5CE37C1192DC2E28DB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E73E28EFD92A82DA5FBC44A6 /* Build configuration list for PBXNativeTarget "ChatFileViewerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F65FEBABC8AEDB6900FEEB76 /* Debug */,
+				D13F4DB8AFF7D3DF595C925F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E3DA41F956C624B93D27FBC /* Project object */;
+}
