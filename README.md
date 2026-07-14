@@ -21,3 +21,14 @@ Use it to make mobile chat feel less like a dead-end text window: save or share 
 xcodegen generate
 xcodebuild -project ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
+
+## Contributing and support
+
+- Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes.
+- Use [GitHub Issues](https://github.com/alexmorris10x/chat-file-viewer/issues) for reproducible bugs and focused feature requests.
+- Read [SECURITY.md](SECURITY.md) before reporting a vulnerability.
+- Support is best-effort; see [SUPPORT.md](SUPPORT.md).
+
+## License
+
+MIT. See [LICENSE](LICENSE).

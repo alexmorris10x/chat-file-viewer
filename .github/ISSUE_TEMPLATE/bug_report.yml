@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem in Chat File Viewer.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include private files, credentials, or vulnerability details.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: iOS version, device or simulator, and app commit or version.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
