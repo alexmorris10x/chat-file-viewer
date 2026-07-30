@@ -8,12 +8,7 @@ final class ShareViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
 
-        let host = UIHostingController(rootView: ShareRenderContainer(
-            model: model,
-            onDone: { [weak self] in
-                self?.extensionContext?.completeRequest(returningItems: nil)
-            }
-        ))
+        let host = UIHostingController(rootView: ShareRenderContainer(model: model))
         addChild(host)
         host.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(host.view)
@@ -32,24 +27,15 @@ final class ShareViewController: UIViewController {
 
 struct ShareRenderContainer: View {
     @ObservedObject var model: ShareRenderModel
-    let onDone: () -> Void
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if model.isLoading {
-                    ProgressView()
-                } else if let errorMessage = model.errorMessage {
-                    ContentUnavailableView("Could not render file", systemImage: "exclamationmark.triangle", description: Text(errorMessage))
-                } else {
-                    MarkupRenderView(document: model.document)
-                }
-            }
-            .navigationTitle("Chat File Viewer")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done", action: onDone)
-                }
+        Group {
+            if model.isLoading {
+                ProgressView()
+            } else if let errorMessage = model.errorMessage {
+                ContentUnavailableView("Could not render file", systemImage: "exclamationmark.triangle", description: Text(errorMessage))
+            } else {
+                MarkupRenderView(document: model.document)
             }
         }
     }
