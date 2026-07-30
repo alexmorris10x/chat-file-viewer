@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var input = MarkupSamples.markdownExample
     @State private var document = MarkupDocument.detect(from: MarkupSamples.markdownExample)
     @State private var isImporterPresented = false
+    @State private var isSourceVisible = false
     @State private var errorMessage: String?
 
     var body: some View {
@@ -13,22 +14,33 @@ struct ContentView: View {
                 MarkupRenderView(document: document)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                Divider()
+                if isSourceVisible {
+                    Divider()
 
-                TextEditor(text: $input)
-                    .font(.system(.body, design: .monospaced))
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .frame(minHeight: 180)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .onChange(of: input) { _, newValue in
-                        document = MarkupDocument.detect(from: newValue)
-                    }
+                    TextEditor(text: $input)
+                        .font(.system(.body, design: .monospaced))
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .frame(minHeight: 180)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .onChange(of: input) { _, newValue in
+                            document = MarkupDocument.detect(from: newValue)
+                        }
+                }
             }
             .navigationTitle("Chat File Viewer")
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        isSourceVisible.toggle()
+                    } label: {
+                        Label(
+                            isSourceVisible ? "Hide Source" : "Show Source",
+                            systemImage: isSourceVisible ? "doc.richtext.fill" : "doc.richtext"
+                        )
+                    }
+
                     Button {
                         isImporterPresented = true
                     } label: {
