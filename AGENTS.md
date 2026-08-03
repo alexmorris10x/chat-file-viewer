@@ -4,6 +4,6 @@ Do not update files in this project unless Alex explicitly asks for the change i
 
 ## Documentation Home
 
-- Canonical product documentation: `/Users/10x/10x-os/Apps/Chat File Viewer/`
+- Canonical product documentation: `/Users/10x/10x-os/50-engineering/Chat File Viewer/`
 - Keep product strategy, research, status, decisions, and launch records there.
 - Keep only code-coupled build, implementation, test, and operations documentation in this repository.
