@@ -20,7 +20,7 @@ jobs:
       - name: Build app and tests
         run: |
           xcodebuild \
-            -project ChatFileViewer.xcodeproj \
+            -project apps/ios/ChatFileViewer.xcodeproj \
             -scheme ChatFileViewer \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO \

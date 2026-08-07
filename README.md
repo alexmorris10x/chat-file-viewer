@@ -19,7 +19,7 @@ Use it to make mobile chat feel less like a dead-end text window: save or share 
 
 ```bash
 xcodegen generate
-xcodebuild -project ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination 'platform=iOS Simulator,name=iPhone 16' build
+xcodebuild -project apps/ios/ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
 
 ## Contributing and support

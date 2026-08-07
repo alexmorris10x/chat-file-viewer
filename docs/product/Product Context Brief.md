@@ -91,10 +91,10 @@ Until the file/share matrix and trust boundary are resolved, broader editing and
 
 ## Source hierarchy
 
-1. [Live app experience](file:///Users/10x/dev/apps/chat-file-viewer/ChatFileViewer/Features/ContentView.swift) and [Share Extension source](file:///Users/10x/dev/apps/chat-file-viewer/ChatFileViewerShare/ShareViewController.swift) win for implementation truth.
+1. [Live app experience](file:///Users/10x/dev/apps/chat-file-viewer/apps/ios/ChatFileViewer/Features/ContentView.swift) and [Share Extension source](file:///Users/10x/dev/apps/chat-file-viewer/apps/ios/ChatFileViewerShare/ShareViewController.swift) win for implementation truth.
 2. [README](file:///Users/10x/dev/apps/chat-file-viewer/README.md) owns the current checked-in product description.
 3. [Project configuration](file:///Users/10x/dev/apps/chat-file-viewer/project.yml) owns target, version, bundle, and deployment settings.
-4. [Focused tests](file:///Users/10x/dev/apps/chat-file-viewer/ChatFileViewerTests/MarkupDocumentTests.swift) describe intended detector behavior but do not replace a current test result.
+4. [Focused tests](file:///Users/10x/dev/apps/chat-file-viewer/apps/ios/ChatFileViewerTests/MarkupDocumentTests.swift) describe intended detector behavior but do not replace a current test result.
 
 If these sources conflict, live source wins for what exists, a current manual device observation wins for behavior, and an explicit new Alex decision wins for direction.
 
