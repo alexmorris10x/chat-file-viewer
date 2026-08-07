@@ -32,3 +32,9 @@ xcodebuild -project ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+
+<!-- canonical-product-docs -->
+## Product documentation
+
+Durable Chat File Viewer product documentation starts with [Product Context Brief](docs/product/Product%20Context%20Brief.md) and stays in this repository. Dated work packets and temporary evidence stay in the owning 10x-os lifecycle folder.
