@@ -11,6 +11,9 @@ struct MarkupRenderView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+        configuration.allowsInlineMediaPlayback = true
+        configuration.allowsPictureInPictureMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
 
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.isOpaque = false
@@ -30,7 +33,14 @@ struct MarkupRenderView: UIViewRepresentable {
     private func load(_ document: MarkupDocument, in webView: WKWebView, coordinator: Coordinator) {
         guard coordinator.loadedDocument != document else { return }
         coordinator.loadedDocument = document
-        webView.loadHTMLString(renderHTML(for: document), baseURL: Bundle.main.resourceURL)
+        if document.kind == .html {
+            webView.loadHTMLString(
+                standaloneHTML(from: document.source),
+                baseURL: Self.applicationBaseURL
+            )
+        } else {
+            webView.loadHTMLString(renderHTML(for: document), baseURL: Bundle.main.resourceURL)
+        }
     }
 
     private func renderHTML(for document: MarkupDocument) -> String {
@@ -310,6 +320,10 @@ struct MarkupRenderView: UIViewRepresentable {
 
     private static let viewportMeta =
         #"<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">"#
+
+    private static let applicationBaseURL = URL(
+        string: "https://\(Bundle.main.bundleIdentifier?.lowercased() ?? "com.10x.chatfileviewer")/"
+    )
 
     final class Coordinator {
         var loadedDocument: MarkupDocument?
