@@ -1,0 +1,9 @@
+{
+  "id" : "a50f3d8a-484e-4168-a18d-5baed95f54a0",
+  "targets" : [
+    {
+      "id" : "352045fb-a3d0-4e0b-9622-0b634b1a3c45",
+      "name" : "ChatFileViewer"
+    }
+  ]
+}
