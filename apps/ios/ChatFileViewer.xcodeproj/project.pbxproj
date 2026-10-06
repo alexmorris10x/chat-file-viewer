@@ -21,6 +21,7 @@
 		955262F1C9A6E4EA4C3E6BC4 /* marked.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 388D7E2623E956A397C30399 /* marked.min.txt */; };
 		973123CF40E7DE305A3B80E5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990ACDC05073AFD2841FE87 /* ShareViewController.swift */; };
 		9E3220A978D7391BAE4294AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BC633B382E96CBA54A1B3EA /* Assets.xcassets */; };
+		C759C0EA481F7E022E1B8512 /* ApplicationIdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E8C76A3DCC9859262918F0 /* ApplicationIdentityTests.swift */; };
 		E358BB27EDC69CEB9102D49C /* MermaidExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D39DA5DDE4442491ED8E0 /* MermaidExtractor.swift */; };
 		EEBF2C5EFA1A3A4AC5BC0C67 /* MermaidRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EFA493ECBD63C0CE253585 /* MermaidRenderView.swift */; };
 		F8558A8249117B78C4678AA5 /* mermaid.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = 27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */; };
@@ -68,6 +69,7 @@
 		036080C15F4551202CAF4825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		121FA53D062B7F034A5D9391 /* ChatFileViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerUITests.swift; sourceTree = "<group>"; };
 		144ADC4BCDEED4737F159459 /* ChatFileViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFileViewerApp.swift; sourceTree = "<group>"; };
+		16E8C76A3DCC9859262918F0 /* ApplicationIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationIdentityTests.swift; sourceTree = "<group>"; };
 		246BC7209860C77C7D0CBA51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27398C4FB4BC3FC9F78853B1 /* mermaid.min.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = mermaid.min.txt; sourceTree = "<group>"; };
 		32ABF9289264E9FBAE70DAE5 /* ChatFileViewerShare.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ChatFileViewerShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 		159B3FD10A2F239F1EC4D283 /* ChatFileViewerTests */ = {
 			isa = PBXGroup;
 			children = (
+				16E8C76A3DCC9859262918F0 /* ApplicationIdentityTests.swift */,
 				FBEDF30EAFA22ADA2A7A5EE7 /* MarkupDocumentTests.swift */,
 			);
 			path = ChatFileViewerTests;
@@ -185,6 +188,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9DBED9138207E54D9A19163 /* Build configuration list for PBXNativeTarget "ChatFileViewer" */;
 			buildPhases = (
+				9E32306B0D9BCE00D2F03CED /* Validate App Identity */,
 				8987EA9FD8055635AC4F8934 /* Sources */,
 				C4AA07EF7F3A11DC3C64FC98 /* Resources */,
 				D8EE77843608638A4ED683A7 /* Embed Foundation Extensions */,
@@ -241,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 213ECE2102BA5E45FF9C4A71 /* Build configuration list for PBXNativeTarget "ChatFileViewerShare" */;
 			buildPhases = (
+				AFF8A7D0EB3C39CCF0E5AEE4 /* Validate App Identity */,
 				D40A0B37A541810529537FED /* Sources */,
 				AC0BC74D8252EF807DA7143E /* Resources */,
 			);
@@ -321,6 +326,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9E32306B0D9BCE00D2F03CED /* Validate App Identity */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../../scripts/validate-app-identity.sh",
+			);
+			name = "Validate App Identity";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/bash \"$SRCROOT/../../scripts/validate-app-identity.sh\"";
+			showEnvVarsInLog = 0;
+		};
+		AFF8A7D0EB3C39CCF0E5AEE4 /* Validate App Identity */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../../scripts/validate-app-identity.sh",
+			);
+			name = "Validate App Identity";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/bash \"$SRCROOT/../../scripts/validate-app-identity.sh\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8987EA9FD8055635AC4F8934 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -345,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C759C0EA481F7E022E1B8512 /* ApplicationIdentityTests.swift in Sources */,
 				4E3292065771BFA6CC942948 /* MarkupDocumentTests.swift in Sources */,
 				0F40A04CF20A16DB58E940FA /* MermaidExtractor.swift in Sources */,
 				EEBF2C5EFA1A3A4AC5BC0C67 /* MermaidRenderView.swift in Sources */,
@@ -485,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CHAT_FILE_VIEWER_DISPLAY_NAME = "Chat File Viewer";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
@@ -506,7 +558,8 @@
 		B58498BC3DCF7D207C060761 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev";
+				CHAT_FILE_VIEWER_DISPLAY_NAME = "Chat File Viewer Dev";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
@@ -517,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.dev;
 				PRODUCT_NAME = ChatFileViewer;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -529,6 +582,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CHAT_FILE_VIEWER_DISPLAY_NAME = "Open in Chat File Viewer";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = 98CDQPW36W;
@@ -626,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CHAT_FILE_VIEWER_DISPLAY_NAME = "Open in Chat File Viewer Dev";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = 98CDQPW36W;
@@ -636,7 +691,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.share;
+				PRODUCT_BUNDLE_IDENTIFIER = com.10x.chatfileviewer.dev.share;
 				PRODUCT_NAME = ChatFileViewerShare;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;

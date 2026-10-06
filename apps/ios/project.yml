@@ -32,10 +32,23 @@ targets:
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 98CDQPW36W
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CHAT_FILE_VIEWER_DISPLAY_NAME: Chat File Viewer
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: ChatFileViewer/Info.plist
         SUPPORTS_MACCATALYST: YES
         DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER: NO
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.10x.chatfileviewer.dev
+          CHAT_FILE_VIEWER_DISPLAY_NAME: Chat File Viewer Dev
+          ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Dev
+    preBuildScripts:
+      - name: Validate App Identity
+        script: /bin/bash "$SRCROOT/../../scripts/validate-app-identity.sh"
+        basedOnDependencyAnalysis: false
+        showEnvVars: false
+        inputFiles:
+          - $(SRCROOT)/../../scripts/validate-app-identity.sh
     dependencies:
       - target: ChatFileViewerShare
         embed: true
@@ -54,6 +67,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.10x.chatfileviewer.share
         PRODUCT_NAME: ChatFileViewerShare
+        CHAT_FILE_VIEWER_DISPLAY_NAME: Open in Chat File Viewer
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 98CDQPW36W
         GENERATE_INFOPLIST_FILE: NO
@@ -61,6 +75,17 @@ targets:
         APPLICATION_EXTENSION_API_ONLY: YES
         SUPPORTS_MACCATALYST: YES
         DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER: NO
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.10x.chatfileviewer.dev.share
+          CHAT_FILE_VIEWER_DISPLAY_NAME: Open in Chat File Viewer Dev
+    preBuildScripts:
+      - name: Validate App Identity
+        script: /bin/bash "$SRCROOT/../../scripts/validate-app-identity.sh"
+        basedOnDependencyAnalysis: false
+        showEnvVars: false
+        inputFiles:
+          - $(SRCROOT)/../../scripts/validate-app-identity.sh
 
   ChatFileViewerTests:
     type: bundle.unit-test

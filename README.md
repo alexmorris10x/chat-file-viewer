@@ -22,6 +22,31 @@ xcodegen generate
 xcodebuild -project apps/ios/ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
 
+## Development and production identities
+
+The normal `ChatFileViewer` scheme runs Debug. Debug installs **Chat File Viewer
+Dev** (`com.10x.chatfileviewer.dev`) with its own Dev icon and **Open in Chat File
+Viewer Dev** share extension (`com.10x.chatfileviewer.dev.share`). It can coexist
+with the production app. Release keeps the existing app and share-extension
+identifiers, display names and icon. The product/module names stay unchanged.
+
+Both versions render locally; this change adds no backend, purchase environment,
+App Group or iCloud capability. Each app uses its own normal app sandbox. A file
+explicitly opened in either version is still the same user-selected file, not a
+copied development document.
+
+After changing `apps/ios/project.yml`, generate from `apps/ios/` with
+`xcodegen generate`. Do not hand-edit the generated Xcode project. Both app
+targets validate their resolved identity at build time. Run the offline guard
+checks from the repository root with `python3 scripts/test-app-identity.py`.
+
+Before merging identity changes, build the complete app and share extension,
+inspect the built bundle identifiers/names/icons, and verify Dev and production
+coexist in a Simulator with distinct share-sheet entries. A source check alone
+does not prove provisioning or installed behavior. Creating Apple identifiers,
+changing signing profiles, installing on a physical device and releasing the
+app are separate actions.
+
 ## Contributing and support
 
 - Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes.
