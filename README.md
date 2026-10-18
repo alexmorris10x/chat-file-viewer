@@ -1,5 +1,7 @@
 # Chat File Viewer
 
+> **Retired 18 Oct 2026.** Its Google Drive browser, renderer and "Open in…" share extension moved into Workspace, the app in the `code-viewer` repository, which reads both GitHub and Google Drive. This repository is kept for history.
+
 Chat File Viewer is a small iOS app for previewing files shared from AI chats and coding tools.
 
 Use it to make mobile chat feel less like a dead-end text window: save or share generated `.html`, `.svg`, `.md`, `.mmd`, and `.txt` files into the app, then render them locally.
