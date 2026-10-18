@@ -116,6 +116,9 @@ final class GoogleAccount: ObservableObject {
         accessTokenExpiry = .distantPast
         refreshTask?.cancel()
         refreshTask = nil
+        // The next account shouldn't see this one's files offline or its Home folder.
+        DriveStore.clearCache()
+        UserDefaults.standard.removeObject(forKey: DriveBrowserView.homeTrailKey)
         state = .signedOut
         if let configuration, let refreshToken {
             let request = configuration.revokeRequest(token: refreshToken)

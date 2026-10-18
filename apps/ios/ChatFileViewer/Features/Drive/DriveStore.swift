@@ -59,17 +59,43 @@ final class DriveStore: ObservableObject {
         let url = folder
             .appendingPathComponent(Self.safeName(item.contentVersion), isDirectory: true)
             .appendingPathComponent(Self.safeName(item.localFileName))
-        if !reload, FileManager.default.fileExists(atPath: url.path) {
+        let cached = FileManager.default.fileExists(atPath: url.path)
+        if cached && !reload && !item.isShortcut {
             return url
         }
-        let data = try await client.content(of: item)
+        let downloaded: URL
+        do {
+            downloaded = try await client.download(item)
+        } catch {
+            if cached && item.isShortcut && !reload {
+                return url  // offline: keep the last copy of a shortcut's target
+            }
+            throw error
+        }
         try? FileManager.default.removeItem(at: folder)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-        try data.write(to: url, options: .atomic)
+        try FileManager.default.moveItem(at: downloaded, to: url)
         return url
     }
 
+    /// Forgets every cached listing and file (used on sign-out).
+    nonisolated static func clearCache(at root: URL? = nil) {
+        let folder = root ?? FileManager.default
+            .urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("Drive", isDirectory: true)
+        try? FileManager.default.removeItem(at: folder)
+    }
+
     // MARK: Links inside pages
+
+    /// Where a file's relative links and images resolve: its folder trail, or for a
+    /// search result (whose path is unknown) its own parent folder.
+    func baseURL(for item: DriveItem, trail: [FolderRef]) -> URL {
+        if trail.isEmpty, let parent = item.parents?.first {
+            return baseURL(for: [FolderRef(id: parent, name: "Folder")])
+        }
+        return baseURL(for: trail)
+    }
 
     func baseURL(for trail: [FolderRef]) -> URL {
         DriveLink.baseURL(rootID: trail.first?.id ?? FolderRef.myDrive.id, folderNames: trail.dropFirst().map(\.name))
@@ -205,8 +231,14 @@ final class DriveSchemeHandler: NSObject, WKURLSchemeHandler {
 
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
         let id = ObjectIdentifier(urlSchemeTask)
-        guard let url = urlSchemeTask.request.url else {
-            urlSchemeTask.didFailWithError(URLError(.badURL))
+        // Serve only the page's own folder tree, and only to the Drive page itself.
+        guard
+            let url = urlSchemeTask.request.url,
+            let requested = DriveLink(url: url),
+            let page = urlSchemeTask.request.mainDocumentURL.flatMap(DriveLink.init(url:)),
+            page.rootID == requested.rootID
+        else {
+            urlSchemeTask.didFailWithError(URLError(.noPermissionsToReadFile))
             return
         }
         tasks[id] = Task { [weak self] in
@@ -224,8 +256,7 @@ final class DriveSchemeHandler: NSObject, WKURLSchemeHandler {
                     httpVersion: "HTTP/1.1",
                     headerFields: [
                         "Content-Type": mimeType,
-                        "Content-Length": String(data.count),
-                        "Access-Control-Allow-Origin": "*"
+                        "Content-Length": String(data.count)
                     ]
                 )!
                 urlSchemeTask.didReceive(response)

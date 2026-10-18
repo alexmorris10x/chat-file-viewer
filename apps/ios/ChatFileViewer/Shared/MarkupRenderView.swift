@@ -54,15 +54,13 @@ struct MarkupRenderView: UIViewRepresentable {
         guard coordinator.loaded != key else { return }
         coordinator.loaded = key
         if document.kind == .html {
-            webView.loadHTMLString(
-                standaloneHTML(from: document.source),
-                baseURL: renderContext.baseURL ?? Self.applicationBaseURL
-            )
+            let base = renderContext.baseURL ?? Self.applicationBaseURL
+            coordinator.loadedBaseURL = base
+            webView.loadHTMLString(standaloneHTML(from: document.source), baseURL: base)
         } else {
-            webView.loadHTMLString(
-                renderHTML(for: document),
-                baseURL: renderContext.baseURL ?? Bundle.main.resourceURL
-            )
+            let base = renderContext.baseURL ?? Bundle.main.resourceURL
+            coordinator.loadedBaseURL = base
+            webView.loadHTMLString(renderHTML(for: document), baseURL: base)
         }
     }
 
@@ -246,8 +244,11 @@ struct MarkupRenderView: UIViewRepresentable {
 
             // An html-render block runs in a sandboxed frame that reports its height.
             function frameDocument(html, id) {
-              const reporter = "<script>(function(){function post(){parent.postMessage({cfvFrame:" + JSON.stringify(id) +
-                ",height:Math.ceil(document.documentElement.getBoundingClientRect().height)},'*');}" +
+              // Content sized to the frame itself (100vh) has no height of its own, so
+              // the frame only resizes when the content differs from the frame.
+              const reporter = "<script>(function(){function post(){" +
+                "var h=Math.ceil(document.documentElement.getBoundingClientRect().height);" +
+                "if(Math.abs(h-window.innerHeight)>1){parent.postMessage({cfvFrame:" + JSON.stringify(id) + ",height:h},'*');}}" +
                 "new ResizeObserver(post).observe(document.documentElement);addEventListener('load',post);post();})();<\/script>";
               if (/<\/body>/i.test(html)) {
                 return html.replace(/<\/body>/i, reporter + "</body>");
@@ -260,12 +261,17 @@ struct MarkupRenderView: UIViewRepresentable {
                 "</head><body>" + html + reporter + "</body></html>";
             }
 
+            // A frame whose content grows with the frame (e.g. min-height: 100vh)
+            // would keep growing, so each frame gets a bounded number of resizes.
+            const frameResizes = {};
             window.addEventListener("message", function(event) {
               const data = event.data;
-              if (data && data.cfvFrame) {
+              if (data && data.cfvFrame && typeof data.height === "number") {
                 const frame = document.getElementById(data.cfvFrame);
-                if (frame) {
-                  frame.style.height = Math.max(20, data.height) + "px";
+                const count = (frameResizes[data.cfvFrame] || 0) + 1;
+                frameResizes[data.cfvFrame] = count;
+                if (frame && count <= 40) {
+                  frame.style.height = Math.min(20000, Math.max(20, data.height)) + "px";
                 }
               }
             });
@@ -518,7 +524,9 @@ struct MarkupRenderView: UIViewRepresentable {
             return "\"\""
         }
 
-        return literal.replacingOccurrences(of: "</script>", with: "<\\/script>")
+        // "<" as \u003c keeps "</script>" and "<!--" in the text from ending or
+        // swallowing the surrounding script element.
+        return literal.replacingOccurrences(of: "<", with: "\\u003c")
     }
 
     private static func bundledText(_ name: String, fallback: String) -> String {
@@ -563,8 +571,12 @@ struct MarkupRenderView: UIViewRepresentable {
         }
 
         var loaded: LoadKey?
+        var loadedBaseURL: URL?
         var onOpenLink: ((URL) -> Void)?
 
+        /// With a link handler (Drive pages), taps open through the handler and
+        /// nothing else may replace the page: script redirects, meta refreshes and
+        /// form posts are blocked. Frames inside the page load normally.
         func webView(
             _ webView: WKWebView,
             decidePolicyFor navigationAction: WKNavigationAction
@@ -572,13 +584,18 @@ struct MarkupRenderView: UIViewRepresentable {
             guard
                 let onOpenLink,
                 let url = navigationAction.request.url,
-                navigationAction.navigationType == .linkActivated,
                 navigationAction.targetFrame?.isMainFrame ?? true,
                 !Self.isSameDocument(url, as: webView.url)
             else {
                 return .allow
             }
-            onOpenLink(url)
+            if navigationAction.navigationType == .linkActivated {
+                onOpenLink(url)
+                return .cancel
+            }
+            if url.scheme == "about" || url.absoluteString == loadedBaseURL?.absoluteString {
+                return .allow
+            }
             return .cancel
         }
 

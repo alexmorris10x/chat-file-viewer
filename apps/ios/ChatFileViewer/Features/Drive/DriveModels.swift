@@ -16,6 +16,9 @@ struct DriveItem: Codable, Hashable, Identifiable {
     let md5Checksum: String?
     let webViewLink: String?
     let shortcutDetails: ShortcutDetails?
+    let parents: [String]?
+    /// False for files other people shared; those render without access to Drive.
+    let ownedByMe: Bool?
 
     init(
         id: String,
@@ -25,7 +28,9 @@ struct DriveItem: Codable, Hashable, Identifiable {
         size: Int64? = nil,
         md5Checksum: String? = nil,
         webViewLink: String? = nil,
-        shortcutDetails: ShortcutDetails? = nil
+        shortcutDetails: ShortcutDetails? = nil,
+        parents: [String]? = nil,
+        ownedByMe: Bool? = nil
     ) {
         self.id = id
         self.name = name
@@ -35,10 +40,12 @@ struct DriveItem: Codable, Hashable, Identifiable {
         self.md5Checksum = md5Checksum
         self.webViewLink = webViewLink
         self.shortcutDetails = shortcutDetails
+        self.parents = parents
+        self.ownedByMe = ownedByMe
     }
 
     enum CodingKeys: String, CodingKey {
-        case id, name, mimeType, modifiedTime, size, md5Checksum, webViewLink, shortcutDetails
+        case id, name, mimeType, modifiedTime, size, md5Checksum, webViewLink, shortcutDetails, parents, ownedByMe
     }
 
     init(from decoder: Decoder) throws {
@@ -56,6 +63,8 @@ struct DriveItem: Codable, Hashable, Identifiable {
         md5Checksum = try container.decodeIfPresent(String.self, forKey: .md5Checksum)
         webViewLink = try container.decodeIfPresent(String.self, forKey: .webViewLink)
         shortcutDetails = try container.decodeIfPresent(ShortcutDetails.self, forKey: .shortcutDetails)
+        parents = try container.decodeIfPresent([String].self, forKey: .parents)
+        ownedByMe = try container.decodeIfPresent(Bool.self, forKey: .ownedByMe)
     }
 
     static let folderMimeType = "application/vnd.google-apps.folder"
@@ -74,8 +83,14 @@ struct DriveItem: Codable, Hashable, Identifiable {
             name: name,
             mimeType: targetMimeType,
             modifiedTime: modifiedTime,
-            webViewLink: webViewLink
+            webViewLink: webViewLink,
+            parents: parents,
+            ownedByMe: ownedByMe
         )
+    }
+
+    var isShortcut: Bool {
+        mimeType == Self.shortcutMimeType
     }
 
     var isFolder: Bool {
@@ -110,6 +125,8 @@ struct DriveItem: Codable, Hashable, Identifiable {
 
     /// Changes whenever the file's content changes, so cached copies stay correct.
     var contentVersion: String {
+        // A shortcut's own dates don't change when its target is edited.
+        if isShortcut { return "shortcut" }
         if let md5Checksum { return md5Checksum }
         if let modifiedTime { return String(Int(modifiedTime.timeIntervalSince1970)) }
         return "unversioned"

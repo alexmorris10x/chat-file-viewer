@@ -6,7 +6,8 @@ struct DriveBrowserView: View {
     @ObservedObject var account: GoogleAccount
     @StateObject private var store: DriveStore
     @State private var path: [DriveRoute] = []
-    @AppStorage("drive.homeTrail") private var homeTrailData = Data()
+    static let homeTrailKey = "drive.homeTrail"
+    @AppStorage(DriveBrowserView.homeTrailKey) private var homeTrailData = Data()
     let openLocalFile: () -> Void
 
     init(account: GoogleAccount, openLocalFile: @escaping () -> Void) {
@@ -186,9 +187,9 @@ struct FolderView: View {
                 .foregroundStyle(.secondary)
         }
         ForEach(results) { item in
-            // Search results don't know their folder path, so their relative links
-            // resolve from Drive's top level.
-            NavigationLink(value: route(for: item, in: [.myDrive])) {
+            // Search results don't know their folder path; their relative links
+            // resolve from the file's own folder.
+            NavigationLink(value: route(for: item, in: [])) {
                 DriveItemRow(item: item)
             }
         }
@@ -216,8 +217,8 @@ struct FolderView: View {
             if folder == .myDrive {
                 sharedDrives = (try? await store.client.sharedDrives()) ?? []
             }
-        } catch is CancellationError {
         } catch {
+            if error.isCancellation { return }
             if items == nil {
                 errorMessage = error.localizedDescription
             } else {
@@ -333,15 +334,8 @@ struct DriveFileView: View {
             ProgressView("Loading…")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         case let .rendered(document, _):
-            MarkupRenderView(
-                document: document,
-                renderContext: MarkupRenderContext(
-                    baseURL: store.baseURL(for: trail),
-                    schemeHandler: store.schemeHandler,
-                    onOpenLink: handleLink
-                )
-            )
-            .ignoresSafeArea(edges: .bottom)
+            MarkupRenderView(document: document, renderContext: renderContext)
+                .ignoresSafeArea(edges: .bottom)
         case let .quickLook(url):
             QuickLookView(url: url)
                 .ignoresSafeArea(edges: .bottom)
@@ -354,6 +348,19 @@ struct DriveFileView: View {
                 Button("Try Again") { Task { await load(reload: true) } }
             }
         }
+    }
+
+    /// Alex's own files can load their relative images and links from Drive.
+    /// Files other people shared render on their own, without Drive access.
+    private var renderContext: MarkupRenderContext {
+        guard item.ownedByMe == true else {
+            return MarkupRenderContext(onOpenLink: handleLink)
+        }
+        return MarkupRenderContext(
+            baseURL: store.baseURL(for: item, trail: trail),
+            schemeHandler: store.schemeHandler,
+            onOpenLink: handleLink
+        )
     }
 
     private var fileURL: URL? {
@@ -379,15 +386,19 @@ struct DriveFileView: View {
             } else {
                 phase = .quickLook(url)
             }
-        } catch is CancellationError {
         } catch {
+            if error.isCancellation { return }
             phase = .failed(error.localizedDescription)
         }
     }
 
     private func handleLink(_ url: URL) {
         guard url.scheme == DriveLink.scheme else {
-            openURL(url)
+            if ["http", "https", "mailto", "tel"].contains(url.scheme?.lowercased() ?? "") {
+                openURL(url)
+            } else {
+                linkError = "Links to other files work only in your own Drive files."
+            }
             return
         }
         Task {
@@ -397,6 +408,14 @@ struct DriveFileView: View {
                 linkError = error.localizedDescription
             }
         }
+    }
+}
+
+extension Error {
+    /// Leaving a screen cancels its loads; that isn't worth showing as an error.
+    var isCancellation: Bool {
+        if self is CancellationError { return true }
+        return (self as? URLError)?.code == .cancelled
     }
 }
 

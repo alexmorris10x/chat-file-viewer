@@ -20,7 +20,7 @@ struct DriveClient {
     let accessToken: (_ forceRefresh: Bool) async throws -> String
     var session: URLSession = .shared
 
-    static let itemFields = "id,name,mimeType,modifiedTime,size,md5Checksum,webViewLink,shortcutDetails(targetId,targetMimeType)"
+    static let itemFields = "id,name,mimeType,modifiedTime,size,md5Checksum,webViewLink,parents,ownedByMe,shortcutDetails(targetId,targetMimeType)"
 
     func children(of folderID: String) async throws -> [DriveItem] {
         try await list(
@@ -59,25 +59,28 @@ struct DriveClient {
         return drives
     }
 
-    /// The file's bytes; Google Docs editors files are exported (Docs as HTML).
-    func content(of item: DriveItem) async throws -> Data {
+    /// Downloads the file to a temporary location (never whole into memory);
+    /// Google Docs editors files are exported (Docs as HTML).
+    func download(_ item: DriveItem) async throws -> URL {
         let target = item.resolved
         if let export = item.export {
-            return try await data(
+            return try await fetch(
                 "files/\(target.id)/export",
-                query: [URLQueryItem(name: "mimeType", value: export.mimeType)]
-            )
+                query: [URLQueryItem(name: "mimeType", value: export.mimeType)],
+                toFile: true
+            ).file!
         }
         if item.isGoogleNative {
             throw DriveError.cannotDownload(item.name)
         }
-        return try await data(
+        return try await fetch(
             "files/\(target.id)",
             query: [
                 URLQueryItem(name: "alt", value: "media"),
                 URLQueryItem(name: "supportsAllDrives", value: "true")
-            ]
-        )
+            ],
+            toFile: true
+        ).file!
     }
 
     private func list(query: String, orderBy: String, limit: Int? = nil) async throws -> [DriveItem] {
@@ -90,7 +93,8 @@ struct DriveClient {
                 URLQueryItem(name: "pageSize", value: String(min(limit ?? 1000, 1000))),
                 URLQueryItem(name: "fields", value: "nextPageToken,files(\(Self.itemFields))"),
                 URLQueryItem(name: "supportsAllDrives", value: "true"),
-                URLQueryItem(name: "includeItemsFromAllDrives", value: "true")
+                URLQueryItem(name: "includeItemsFromAllDrives", value: "true"),
+                URLQueryItem(name: "corpora", value: "allDrives")
             ]
             if let pageToken { items.append(URLQueryItem(name: "pageToken", value: pageToken)) }
             let page: DriveFileList = try await get("files", query: items)
@@ -102,10 +106,10 @@ struct DriveClient {
     }
 
     private func get<T: Decodable>(_ path: String, query: [URLQueryItem]) async throws -> T {
-        try JSONDecoder.drive.decode(T.self, from: try await data(path, query: query))
+        try JSONDecoder.drive.decode(T.self, from: try await fetch(path, query: query, toFile: false).data!)
     }
 
-    private func data(_ path: String, query: [URLQueryItem]) async throws -> Data {
+    private func fetch(_ path: String, query: [URLQueryItem], toFile: Bool) async throws -> (data: Data?, file: URL?) {
         var components = URLComponents(string: "https://www.googleapis.com/drive/v3/\(path)")!
         components.queryItems = query
         // URLComponents leaves "+" alone, which Google reads as a space.
@@ -116,16 +120,27 @@ struct DriveClient {
         while true {
             var request = URLRequest(url: url)
             request.setValue("Bearer \(try await accessToken(forceRefresh))", forHTTPHeaderField: "Authorization")
-            let (data, response) = try await session.data(for: request)
+            let data: Data?
+            let file: URL?
+            let response: URLResponse
+            if toFile {
+                (file, response) = try await session.download(for: request)
+                data = nil
+            } else {
+                (data, response) = try await session.data(for: request)
+                file = nil
+            }
             let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+            if (200..<300).contains(status) {
+                return (data, file)
+            }
+            let body = data ?? file.flatMap { try? Data(contentsOf: $0) } ?? Data()
+            if let file { try? FileManager.default.removeItem(at: file) }
             if status == 401 && !forceRefresh {
                 forceRefresh = true
                 continue
             }
-            guard (200..<300).contains(status) else {
-                throw DriveError.http(status, Self.message(from: data))
-            }
-            return data
+            throw DriveError.http(status, Self.message(from: body))
         }
     }
 
