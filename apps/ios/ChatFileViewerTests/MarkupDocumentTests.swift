@@ -35,4 +35,20 @@ final class MarkupDocumentTests: XCTestCase {
 
         XCTAssertEqual(document.kind, .html)
     }
+
+    func testFileExtensionChoosesTheRenderer() {
+        XCTAssertEqual(MarkupDocument.forFile(named: "Plan.md", text: "<div>x</div>").kind, .markdown)
+        XCTAssertEqual(MarkupDocument.forFile(named: "page.HTML", text: "hello").kind, .html)
+        XCTAssertEqual(MarkupDocument.forFile(named: "data.tsv", text: "a\tb").language, "\t")
+        XCTAssertEqual(MarkupDocument.forFile(named: "notes.txt", text: "# not a heading").kind, .text)
+
+        let code = MarkupDocument.forFile(named: "main.swift", text: "let x = 1")
+        XCTAssertEqual(code.kind, .code)
+        XCTAssertEqual(code.language, "swift")
+        XCTAssertEqual(MarkupDocument.forFile(named: "Makefile", text: "all:").language, "makefile")
+    }
+
+    func testUnknownExtensionFallsBackToContent() {
+        XCTAssertEqual(MarkupDocument.forFile(named: "diagram", text: "flowchart LR\n A --> B").kind, .mermaid)
+    }
 }

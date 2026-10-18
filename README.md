@@ -6,6 +6,9 @@ Use it to make mobile chat feel less like a dead-end text window: save or share 
 
 ## What it does
 
+- Browses Google Drive after a Google sign-in (read-only): folders, shared drives and search. Opens Markdown, HTML, code, CSV/TSV, SVG and Mermaid files rendered, and everything else (images, PDFs, Office files, audio, video) in Quick Look. Google Docs open as HTML; Sheets and Slides as PDF.
+- Follows relative links between Drive files and loads a page's relative images, so a folder of linked Markdown or HTML pages reads like a site. Renders ```` ```html-render ```` blocks as sandboxed frames.
+- Keeps a copy of every folder list and file it has opened, so they open again offline. Any folder can be pinned as Home.
 - Renders raw Mermaid source in a native SwiftUI app.
 - Displays standalone SVG.
 - Renders HTML snippets and documents.
@@ -13,7 +16,7 @@ Use it to make mobile chat feel less like a dead-end text window: save or share 
 - Extracts the first Mermaid code fence from Markdown text.
 - Opens `.mmd`, `.svg`, `.md`, `.html`, and `.txt` files from the app.
 - Adds a Share Extension named `Open in Chat File Viewer` so Files can send text/file input straight to the renderer.
-- Bundles Mermaid `11.15.0` locally through `WKWebView`; no hosted renderer is required.
+- Bundles Mermaid `11.15.0` and highlight.js `11.12.0` (GitHub light and dark themes) locally through `WKWebView`; no hosted renderer is required.
 
 ## Build
 
@@ -21,6 +24,10 @@ Use it to make mobile chat feel less like a dead-end text window: save or share 
 xcodegen generate
 xcodebuild -project apps/ios/ChatFileViewer.xcodeproj -scheme ChatFileViewer -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
+
+## Google sign-in
+
+The app signs in with an iOS OAuth client (authorization code flow with PKCE through `ASWebAuthenticationSession`; no client secret) and asks only for `drive.readonly`. The client IDs live in `apps/ios/project.yml` (`GOOGLE_IOS_CLIENT_ID`, one per configuration; they are public identifiers) and belong to the Internal Google Cloud project `tenx-work-drive`, so only alexmorris10x.com accounts can sign in. `GOOGLE_HOSTED_DOMAIN` pre-selects that Workspace domain. The refresh token stays in the Keychain on the device.
 
 ## Development and production identities
 

@@ -10,7 +10,7 @@ settings:
   base:
     SWIFT_VERSION: 5.9
     IPHONEOS_DEPLOYMENT_TARGET: "17.0"
-    MARKETING_VERSION: "0.1.0"
+    MARKETING_VERSION: "0.2.0"
     CURRENT_PROJECT_VERSION: "3"
 
 targets:
@@ -25,9 +25,17 @@ targets:
         buildPhase: resources
       - path: ChatFileViewer/Resources/marked.min.txt
         buildPhase: resources
+      - path: ChatFileViewer/Resources/highlight.min.txt
+        buildPhase: resources
+      - path: ChatFileViewer/Resources/highlight-theme.css.txt
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.10x.chatfileviewer
+        GOOGLE_HOSTED_DOMAIN: alexmorris10x.com
+        # Google sign-in: iOS OAuth clients in the Internal "10x Work Drive" project
+        # (tenx-work-drive, alexmorris10x.com). Client IDs are public identifiers.
+        GOOGLE_IOS_CLIENT_ID: 402014611029-a7pfv106skklk2ofiqsu0btelg0d254k.apps.googleusercontent.com
         PRODUCT_NAME: ChatFileViewer
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 98CDQPW36W
@@ -42,6 +50,7 @@ targets:
           PRODUCT_BUNDLE_IDENTIFIER: com.10x.chatfileviewer.dev
           CHAT_FILE_VIEWER_DISPLAY_NAME: Chat File Viewer Dev
           ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon-Dev
+          GOOGLE_IOS_CLIENT_ID: 402014611029-o5uc9oc23br5h1so5aqgtmdqt64oh9f9.apps.googleusercontent.com
     preBuildScripts:
       - name: Validate App Identity
         script: /bin/bash "$SRCROOT/../../scripts/validate-app-identity.sh"
@@ -62,6 +71,10 @@ targets:
       - path: ChatFileViewer/Resources/mermaid.min.txt
         buildPhase: resources
       - path: ChatFileViewer/Resources/marked.min.txt
+        buildPhase: resources
+      - path: ChatFileViewer/Resources/highlight.min.txt
+        buildPhase: resources
+      - path: ChatFileViewer/Resources/highlight-theme.css.txt
         buildPhase: resources
     settings:
       base:
